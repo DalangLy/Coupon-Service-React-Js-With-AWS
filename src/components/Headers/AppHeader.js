@@ -74,8 +74,8 @@ export default function AppHeader({ notificationCount, collapseMenu }) {
         </div>
         <div
           className='self-center px-3 py-2 bg-sky-200 rounded-lg mr-3 cursor-pointer hover:bg-sky-500 hover:text-white transition duration-150 ease-in-out'
-          onClick={() => {
-            history.push('/admin/generate-coupon');
+          onClick={(e) => {
+            op.current.toggle(e)
           }}
         >
           <i
@@ -89,6 +89,10 @@ export default function AppHeader({ notificationCount, collapseMenu }) {
             ></Badge>
           </i>
         </div>
+
+        <OverlayPanel ref={op}>
+          // Content
+        </OverlayPanel>
       </div>
     </header>
   );
