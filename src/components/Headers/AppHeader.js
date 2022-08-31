@@ -9,6 +9,7 @@ import { Badge } from 'primereact/badge';
 
 export default function AppHeader({ notificationCount, collapseMenu }) {
   const op = React.useRef(null);
+  const notificationPopOverlayPanel = React.useRef();
   const history = useHistory();
   const auth = useSelector((state) => state.auth.user);
 
@@ -75,7 +76,7 @@ export default function AppHeader({ notificationCount, collapseMenu }) {
         <div
           className='self-center px-3 py-2 bg-sky-200 rounded-lg mr-3 cursor-pointer hover:bg-sky-500 hover:text-white transition duration-150 ease-in-out'
           onClick={(e) => {
-            op.current.toggle(e)
+            notificationPopOverlayPanel.current.toggle(e)
           }}
         >
           <i
@@ -90,7 +91,7 @@ export default function AppHeader({ notificationCount, collapseMenu }) {
           </i>
         </div>
 
-        <OverlayPanel ref={op}>
+        <OverlayPanel ref={notificationPopOverlayPanel}>
           // Content
         </OverlayPanel>
       </div>
