@@ -1,0 +1,21 @@
+{
+  "roles": {
+    "id": "String",
+    "roleName": "String",
+    "permission": [
+      {
+        "dbName": "String",
+        "read": true,
+        "write": true
+      },
+      {
+        "dbName": "String",
+        "read": true,
+        "write": false
+      }
+    ],
+    "createdAt": "dateTime",
+    "updatedAt": "dateTime",
+    "deletedAt": "dateTime"
+  }
+}

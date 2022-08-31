@@ -1,0 +1,37 @@
+@media only screen and (min-width: 1500px) {
+  .qr-code-scanner {
+    width: 70% !important;
+    height: 70% !important;
+    margin: 0 auto !important;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .main-container {
+    width: 72% !important;
+  }
+  .nav-menu {
+    width: 28% !important;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .main-container {
+    width: 98% !important;
+  }
+  .nav-menu {
+    display: none !important;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .main-container {
+    width: 98% !important;
+  }
+  .nav-menu {
+    display: none !important;
+  }
+  .xs-w {
+    width: 100% !important;
+  }
+}

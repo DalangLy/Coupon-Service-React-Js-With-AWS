@@ -1,0 +1,292 @@
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  background-color: rgb(224 242 254 / var(--tw-bg-opacity)) !important;
+}
+
+#root {
+  height: 100%;
+}
+
+.flex-row-reverse {
+  flex-direction: row-reverse;
+}
+
+.mx-3 {
+  margin-left: 0.75rem; /* 12px */
+  margin-right: 0.75rem; /* 12px */
+}
+
+.available-height {
+  height: -webkit-fill-available;
+}
+
+iframe {
+  display: none;
+}
+
+.float-right {
+  float: right;
+}
+
+.p-button.p-button-text {
+  color: black !important;
+}
+
+.p-message-wrapper {
+  padding: 0.5rem 1.25rem !important;
+}
+
+.border-red {
+  border-color: red !important;
+}
+
+.p-paginator {
+  justify-content: end !important;
+}
+
+.justify-content-end {
+  justify-content: end !important;
+}
+
+.p-datatable .p-datatable-tbody > tr > td {
+  padding: 0.5rem !important;
+}
+
+.p-column-title {
+  color: rgba(100, 116, 139, var(--tw-text-opacity)) !important;
+  font-size: 0.875rem !important;
+  line-height: 1.25rem !important;
+}
+
+.p-datatable .p-datatable-thead > tr > th {
+  padding: 0.6rem !important;
+}
+
+.p-datatable-header {
+  background-color: white !important;
+  border: none !important;
+}
+
+.p-datatable-emptymessage > td {
+  text-align: center !important;
+  padding: 1rem !important;
+}
+
+.p-avatar {
+  width: 3rem !important;
+  height: 3rem !important;
+  background-color: rgba(59, 130, 246, 0.5) !important;
+}
+
+.p-avatar-text {
+  font-size: 1.2rem !important;
+  font-weight: 500;
+}
+
+.p-dialog,
+.p-dialog-enter-done {
+  margin: 4rem !important;
+}
+
+.p-inputgroup-addon {
+  background-color: white !important;
+}
+
+.p-inputtext:enabled:focus {
+  outline: 0 none;
+  outline-offset: 0;
+  box-shadow: 0 0 0 0.2rem #2563eb !important;
+  border-color: #6366f1;
+}
+
+.p-dialog .p-dialog-content {
+  padding-top: 1rem !important;
+}
+
+.p-button-label:hover {
+  color: #ffffff;
+}
+
+.p-panelmenu .p-panelmenu-header > a {
+  border: none !important;
+  background: none !important;
+  padding: 1rem 0rem 1rem 0rem !important;
+}
+
+.p-panelmenu .p-panelmenu-content {
+  border: none !important;
+}
+
+.p-panelmenu .p-panelmenu-header > a:focus {
+  box-shadow: none !important;
+}
+
+.p-panelmenu-header-link {
+  font-size: 0.85rem !important;
+  line-height: 1rem !important;
+  font-weight: 700 !important;
+}
+
+.p-panelmenu-header:hover {
+  background-color: #e9ecef !important;
+}
+
+.p-message .p-message-wrapper {
+  padding: 1.2rem !important;
+}
+
+.border-red {
+  border-color: rgb(248 113 113 / var(--tw-text-opacity)) !important;
+}
+
+.display-none {
+  display: none !important;
+}
+
+.p-tabview-panels {
+  padding: 3rem 0rem !important;
+}
+
+.p-datatable .p-datatable-tbody > tr.row-accessories {
+  background-color: #ffc9c9ab !important;
+}
+
+.loading-spinner {
+  box-shadow: none !important;
+}
+.loading-spinner > .p-dialog,
+.loading-spinner > .p-dialog-header,
+.loading-spinner > .p-dialog-footer,
+.loading-spinner > .p-dialog-content {
+  border-bottom: 0 none;
+  background: transparent !important;
+}
+
+.min-h-screen-90 {
+  height: 90vh !important;
+}
+html {
+  scrollbar-width: none !important; /* For Firefox */
+  -ms-overflow-style: none !important; /* For Internet Explorer and Edge */
+}
+
+html::-webkit-scrollbar {
+  width: 0px !important; /* For Chrome, Safari, and Opera */
+}
+
+.main-container {
+  transition: width 0.3s ease-in-out, transform 0.4s ease-in-out;
+  /* transition: transform 0.6s ease-in-out; */
+}
+
+.main-hide {
+  transform: translateX(-2%);
+  width: 96% !important;
+}
+
+.nav-menu {
+  visibility: visible;
+  transition: width 0.3s ease-in-out;
+}
+
+.nav-menu-hide {
+  /* transform: translateX(-14%); */
+  visibility: hidden;
+  width: 0% !important;
+}
+.p-overlaypanel {
+  box-shadow: 0 2px 7px rgb(153 153 153 / 30%) !important;
+}
+
+.min-h-fit-content {
+  height: 90% !important;
+}
+
+.p-tabmenu
+  .p-tabmenu-nav
+  .p-tabmenuitem
+  .p-menuitem-link:not(.p-disabled):focus {
+  box-shadow: none !important;
+}
+
+.p-tabview .p-tabview-nav li .p-tabview-nav-link:not(.p-disabled):focus {
+  box-shadow: none !important;
+}
+
+.input-text {
+  border: 0.5px solid rgb(221, 221, 221) !important;
+}
+
+.p-message.p-message-error,
+.p-message.p-message-success {
+  border: none !important;
+  border-width: 0 0 0 0px !important;
+}
+
+.transition-width {
+  transition: width 0.3s ease-in-out;
+  /* transition: transform 0.6s ease-in-out; */
+}
+
+.p-button-label:hover {
+  /* color: #4f46e5 !important; */
+}
+
+.p-button-outlined:hover {
+  background-color: #6366f1 !important;
+  color: #fff !important;
+}
+
+.p-button.p-button-text:enabled:hover,
+.p-button.p-button-text:not(button):not(a):not(.p-disabled):hover {
+  background: rgba(99, 102, 241, 0.04) !important;
+  color: #6366f1 !important;
+  border-color: transparent !important;
+}
+
+.p-column-filter-add-button > .p-button-label:hover {
+  color: #4f46e5 !important;
+}
+
+.p-column-filter {
+  border-radius: 6px !important;
+}
+
+.p-overlay-badge .p-badge {
+  right: -6px !important;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 60px;
+  height: 30px;
+  background-color: rgb(148, 148, 148);
+  color: #fff;
+  text-align: center;
+  padding: 5px;
+  border-radius: 4px;
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}

@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "apiName": "couponservice",
+    "serviceName": "AppSync",
+    "gqlSchemaPath": "C:\\Users\\atech\\OneDrive\\Desktop\\Atech Projects\\Productions\\coupon-service\\amplify\\backend\\api\\couponservice\\schema.graphql",
+    "defaultAuthType": {
+      "mode": "AMAZON_COGNITO_USER_POOLS",
+      "cognitoUserPoolId": "authcouponservice62209538"
+    },
+    "additionalAuthTypes": [
+      {
+        "mode": "API_KEY",
+        "expirationTime": 7,
+        "apiKeyExpirationDate": "2022-08-05T04:47:23.520Z",
+        "keyDescription": ""
+      }
+    ]
+  }
+}

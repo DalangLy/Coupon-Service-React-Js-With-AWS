@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "paths": {
+    "/group": {
+      "name": "/group",
+      "lambdaFunction": "group",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "create",
+          "read",
+          "update",
+          "delete"
+        ]
+      }
+    }
+  }
+}

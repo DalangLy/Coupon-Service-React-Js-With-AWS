@@ -1,0 +1,41 @@
+{
+  "prod": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-couponservice-prod-142809-authRole",
+      "UnauthRoleArn": "arn:aws:iam::528892162559:role/amplify-couponservice-prod-142809-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::528892162559:role/amplify-couponservice-prod-142809-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-couponservice-prod-142809-deployment",
+      "UnauthRoleName": "amplify-couponservice-prod-142809-unauthRole",
+      "StackName": "amplify-couponservice-prod-142809",
+      "StackId": "arn:aws:cloudformation:us-east-1:528892162559:stack/amplify-couponservice-prod-142809/d7fe8b70-098f-11ed-94c8-0ea3298252a9",
+      "AmplifyAppId": "dtg9k6vyvtgds",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-couponservice-prod-142809-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
+    },
+    "categories": {
+      "auth": {
+        "couponservice62209538": {}
+      },
+      "function": {
+        "user": {
+          "deploymentBucketName": "amplify-couponservice-prod-142809-deployment",
+          "s3Key": "amplify-builds/user-67493750574e486d664a-build.zip"
+        },
+        "group": {
+          "deploymentBucketName": "amplify-couponservice-prod-142809-deployment",
+          "s3Key": "amplify-builds/group-7866534f58686e743978-build.zip"
+        },
+        "sendMail": {
+          "deploymentBucketName": "amplify-couponservice-prod-142809-deployment",
+          "s3Key": "amplify-builds/sendMail-75587337746c72364642-build.zip"
+        }
+      },
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "dtg9k6vyvtgds",
+          "type": "manual"
+        }
+      }
+    }
+  }
+}
