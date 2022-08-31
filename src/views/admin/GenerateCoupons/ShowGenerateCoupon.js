@@ -89,8 +89,9 @@ export default function ShowGenerateCoupon() {
     history.push('/admin/qrcode/' + serial?.code);
   }
 
-  function copyCode(serial) {
-    navigator.clipboard.writeText(serial?.code);
+  async function copyCode(serial) {
+    console.log(serial);
+    await navigator.clipboard.writeText(serial?.code);
   }
 
   return (

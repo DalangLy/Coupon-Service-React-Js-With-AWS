@@ -95,7 +95,7 @@ export default function Users() {
           }}
           className={`text-sky-700 hover:text-white border border-sky-700 hover:bg-sky-800  focus:outline-none focus:ring-sky-300 font-medium rounded-lg text-sm px-2 py-1 text-center mr-2 mb-2 dark:border-sky-500 dark:text-sky-500 dark:hover:text-white dark:hover:bg-sky-600 dark:focus:ring-sky-800`}
         >
-          Reset
+          Reset Password
         </button>
         <button
           type='button'
@@ -185,9 +185,9 @@ export default function Users() {
         <ConfirmDialog
           visible={visible}
           onHide={() => setVisible(false)}
-          message={`Are you sure you want to disable ${delUser.name}?`}
-          header='Disable'
-          icon='pi pi-trash'
+          message={`Are you sure you want to ${delUser.deletedAt === null ? 'disable' : 'enable'} ${delUser.name}?`}
+          header={`${delUser.deletedAt === null ? 'Disable' : 'Enable'}`}
+          icon={`${delUser.deletedAt === null ? 'pi pi-times-circle' : 'pi pi-lock-open'}`}
           acceptClassName='p-button-danger text-black'
           accept={() => {
             acceptDelete();
