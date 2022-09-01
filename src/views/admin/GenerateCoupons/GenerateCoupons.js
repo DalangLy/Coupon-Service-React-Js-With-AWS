@@ -55,6 +55,7 @@ export default function GenerateCoupons() {
   };
 
   const bodyApproved = (rowData) => {
+      console.log(rowData.status);
     const color =
       rowData.status === GenerateCouponStatus.APPROVED
         ? 'green'

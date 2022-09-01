@@ -62,7 +62,7 @@ export default function Admin() {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
-
+  console.log(dashbaordReducer)
   return (
     <div className='min-h-screen bg-slate-100'>
       <ConfirmDialog
