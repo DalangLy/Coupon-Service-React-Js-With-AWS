@@ -8,6 +8,7 @@ export default function ShowCoupon() {
   const coupons = useSelector((state) => state.coupons.data);
   const [dpackage, setPackage] = useState({});
 
+  //take id param from url
   const { id } = useParams();
 
   useEffect(() => {
@@ -151,42 +152,44 @@ export default function ShowCoupon() {
                   </th>
                 </tr>
               </thead>
-              <tbody>
-                {dpackage?.couponDiscountPackage !== undefined &&
-                dpackage?.couponDiscountPackage !== null &&
-                dpackage.couponDiscountPackage.items.length > 0 ? (
-                  dpackage.couponDiscountPackage.items.map((e, index) => {
-                    const coupon = coupons.filter(
-                      (filter) => filter.id === e.couponDiscountPackageCouponId
-                    );
-                    return (
-                      <tr
-                        className='bg-white border-b dark:bg-gray-800 dark:border-gray-700'
-                        key={index}
-                      >
-                        <th
-                          scope='row'
-                          className='px-6 py-4 font-medium text-black'
-                        >
-                          {coupon.length > 0 ? coupon[0].name : '-'}
-                        </th>
-                        <td className='px-6 py-4 font-medium text-black'>
-                          {e.price}
-                        </td>
-                        <td className='px-6 py-4 font-medium text-black'>
-                          {e.quantity}
-                        </td>
-                        <td className='px-6 py-4 font-medium text-black'>
-                          {e.discount} %
-                        </td>
-                        <td className='px-6 py-4 font-medium text-black'>-</td>
-                      </tr>
-                    );
-                  })
-                ) : (
-                  <></>
-                )}
-              </tbody>
+              {/*<h1>{JSON.stringify(dpackage.couponDiscountPackage)}</h1>*/}
+              {/*<tbody>*/}
+              {/*  {dpackage?.couponDiscountPackage !== undefined &&*/}
+              {/*  dpackage?.couponDiscountPackage !== null &&*/}
+              {/*      dpackage?.couponDiscountPackage != {}*/}
+              {/*      ? (*/}
+              {/*    dpackage.couponDiscountPackage.items.map((e, index) => {*/}
+              {/*      const coupon = coupons.filter(*/}
+              {/*        (filter) => filter.id === e.couponDiscountPackageCouponId*/}
+              {/*      );*/}
+              {/*      return (*/}
+              {/*        <tr*/}
+              {/*          className='bg-white border-b dark:bg-gray-800 dark:border-gray-700'*/}
+              {/*          key={index}*/}
+              {/*        >*/}
+              {/*          <th*/}
+              {/*            scope='row'*/}
+              {/*            className='px-6 py-4 font-medium text-black'*/}
+              {/*          >*/}
+              {/*            {coupon.length > 0 ? coupon[0].name : '-'}*/}
+              {/*          </th>*/}
+              {/*          <td className='px-6 py-4 font-medium text-black'>*/}
+              {/*            {e.price}*/}
+              {/*          </td>*/}
+              {/*          <td className='px-6 py-4 font-medium text-black'>*/}
+              {/*            {e.quantity}*/}
+              {/*          </td>*/}
+              {/*          <td className='px-6 py-4 font-medium text-black'>*/}
+              {/*            {e.discount} %*/}
+              {/*          </td>*/}
+              {/*          <td className='px-6 py-4 font-medium text-black'>-</td>*/}
+              {/*        </tr>*/}
+              {/*      );*/}
+              {/*    })*/}
+              {/*  ) : (*/}
+              {/*    <></>*/}
+              {/*  )}*/}
+              {/*</tbody>*/}
             </table>
           </div>
         </div>

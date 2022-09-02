@@ -245,6 +245,13 @@ export default function CloseTicketReport() {
   const customerDataTemplate = (data) =>
     data?.applier?.firstName + ' ' + data?.applier?.lastName;
 
+  useEffect(() => {
+    reportCloseTickets.data.sort((a, b) => {
+      console.log(new Date(a.createdAt));
+      return new Date(a.createdAt) - new Date(b.createdAt);
+    })
+  },[])
+
   return (
     <>
       <div className='flex flex-wrap'>

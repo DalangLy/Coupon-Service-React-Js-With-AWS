@@ -43,7 +43,7 @@ export default function AppHeader({ notificationCount, collapseMenu }) {
       <div className='ml-5 lg:w-3/12 self-center md:w-64'>
         <span className='p-input-icon-left w-full'>
           <i className='pi pi-search' />
-          <InputText className='w-full' value={''} placeholder='Search' />
+          <InputText className='w-full' placeholder='Search' />
         </span>
       </div>
       <div className='ml-5 lg:w-8/12  md:w-64 flex flex-row-reverse'>
