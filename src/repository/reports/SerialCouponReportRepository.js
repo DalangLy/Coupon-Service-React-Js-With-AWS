@@ -32,7 +32,7 @@ export default async function SerialCouponReportRepository(
       },
     });
 
-    return response.data.listCouponSerialCodes;
+    return response.data.listCouponSerialCodes.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
   } else {
     return [];
   }

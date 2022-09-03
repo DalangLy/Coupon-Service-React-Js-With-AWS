@@ -14,7 +14,7 @@ export default async function getCloseTicketReportRepository(
 
   let response;
   if (group !== undefined) {
-    dataFilters['couponAppliedResolverId'] = { eq: auth.username };
+    dataFilters['couponAppliedResolverId'] = { eq: auth.username, };
     if (group.includes('Supports')) {
       response = await API.graphql({
         query: listCouponApplieds,
@@ -52,5 +52,5 @@ export default async function getCloseTicketReportRepository(
     }
   }
 
-  return response === undefined ? [] : response.data.listCouponApplieds;
+  return response === undefined ? [] :  response.data.listCouponApplieds;
 }
