@@ -8,7 +8,7 @@ import { onEdit } from 'reducers/packageReducer';
 import updatePackageRepository from 'repository/package/updatePackageRepository';
 import FormPackage from './FormPackage';
 
-export default function EditCoupon() {
+export default function EditPackage() {
   const [isLoading, setIsLoading] = useState(false);
   const messages = useRef(null);
 

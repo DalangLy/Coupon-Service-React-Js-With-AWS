@@ -8,7 +8,7 @@ import CustomButton from 'components/Buttons/CustomButton';
 import CustomTextAreaInput from 'components/TextFields/CustomTextAreaInput';
 import findPackageRepository from 'repository/package/findPackageRepository';
 
-class FormCoupon extends Component {
+class FormPackage extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -38,7 +38,9 @@ class FormCoupon extends Component {
 
   async componentDidMount() {
     if (this.props.id !== undefined && this.props.isEdit) {
+      console.log('hello '+JSON.stringify(this.props))
       let data = this.props.packages.filter((e) => e.id === this.props.id);
+
       if (data.length > 0) {
         data = data[0];
       } else {
@@ -467,4 +469,4 @@ function mapStateToProps(state) {
   return { coupons: coupons, packages, couponsDataDropdown };
 }
 
-export default connect(mapStateToProps)(FormCoupon);
+export default connect(mapStateToProps)(FormPackage);

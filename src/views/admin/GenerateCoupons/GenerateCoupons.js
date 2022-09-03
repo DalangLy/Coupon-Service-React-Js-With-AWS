@@ -40,6 +40,8 @@ export default function GenerateCoupons() {
     },
   };
 
+  console.log('GenerateCoupons.js '+JSON.stringify(sales))
+
   const actionViewSaleTemplate = (rowData) => {
     return (
       <ShowButton
@@ -55,7 +57,7 @@ export default function GenerateCoupons() {
   };
 
   const bodyApproved = (rowData) => {
-      console.log(rowData.status);
+      console.log('row data'+JSON.stringify(rowData))
     const color =
       rowData.status === GenerateCouponStatus.APPROVED
         ? 'green'
@@ -64,10 +66,8 @@ export default function GenerateCoupons() {
         : 'red';
     return (
       <React.Fragment>
-        <span
-          className={`bg-${color}-100 text-${color}-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-${color}-200 dark:text-${color}-900`}
-        >
-          {rowData.status}
+        <span className={`bg-${color}-100 text-${color}-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-${color}-200 dark:text-${color}-900`}>
+          {rowData.approver == null ? 'Pending' : 'Approved'}
         </span>
       </React.Fragment>
     );
