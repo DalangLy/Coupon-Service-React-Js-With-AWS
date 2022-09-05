@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { onNextPageSales, fetchSales } from 'reducers/saleReducer';
+import {onNextPageSales, fetchSales, onEdit} from 'reducers/saleReducer';
 // components
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -14,11 +14,16 @@ import RedirectSmallButton from 'components/Buttons/RedirectSmallButton';
 import shortid from 'shortid';
 import ShowButton from 'components/Datatables/ShowButton';
 import { GenerateCouponStatus } from 'config/constants/';
+import updatePackageRepository from "../../../repository/package/updatePackageRepository";
+import {API} from "aws-amplify";
+import {updatePackage, updateSaleCoupon} from "../../../graphql/mutations";
+
 
 export default function GenerateCoupons() {
-  let sales = useSelector((state) => state.sales);
-  const history = useHistory();
-  const dispatch = useDispatch();
+    let sales = useSelector((state) => state.sales);
+    const history = useHistory();
+    const dispatch = useDispatch();
+    const auth = useSelector((state) => state.auth);
 
   const filter = {
     global: { value: null, matchMode: FilterMatchMode.CONTAINS },
@@ -40,15 +45,37 @@ export default function GenerateCoupons() {
     },
   };
 
-  console.log('GenerateCoupons.js '+JSON.stringify(sales))
+
+    // const ff = async (event, id) => {
+    //     event.preventDefault();
+    //     console.log('id is '+id)
+    //     await API.graphql({
+    //         query: updateSaleCoupon,
+    //         variables: { input: {status: "Pending", id: id} },
+    //     });
+    // };
+
 
   const actionViewSaleTemplate = (rowData) => {
     return (
-      <ShowButton
-        onClick={() => {
-          history.push('/admin/sales/' + rowData.id);
-        }}
-      />
+        <div>
+            <ShowButton
+                onClick={() => {
+                    history.push('/admin/sales/' + rowData.id);
+                }}
+            />
+            {/*{auth?.userType?.includes('Sales') || auth?.userType?.includes('Account') ?*/}
+            {/*    <button*/}
+            {/*        type='button'*/}
+            {/*        onClick={(e) => ff(e, rowData.id)}*/}
+            {/*        className='text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800  focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-1 text-center mr-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-600 dark:focus:ring-blue-800'*/}
+            {/*    >*/}
+            {/*        <i className='pi pi-file-o' aria-hidden='true'></i> Approve*/}
+            {/*    </button>*/}
+            {/*    : <div></div>*/}
+            {/*}*/}
+
+        </div>
     );
   };
 
@@ -67,7 +94,7 @@ export default function GenerateCoupons() {
     return (
       <React.Fragment>
         <span className={`bg-${color}-100 text-${color}-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-${color}-200 dark:text-${color}-900`}>
-          {rowData.approver == null ? 'Pending' : 'Approved'}
+          {rowData.status}
         </span>
       </React.Fragment>
     );

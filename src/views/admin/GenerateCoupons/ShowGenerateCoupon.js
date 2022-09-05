@@ -195,7 +195,7 @@ export default function ShowGenerateCoupon() {
                 </div>
                 <div className='w-4/12 mb-1 '>Description</div>
                 <div className='w-8/12 mb-1 font-medium'>
-                  : {sale?.description ?? '-'}
+                  : {sale?.description}
                 </div>
               </div>
             </div>

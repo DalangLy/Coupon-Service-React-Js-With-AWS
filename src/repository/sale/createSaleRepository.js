@@ -45,7 +45,7 @@ export default async function createSaleRepository(data, mailing) {
       saleCouponApproverId: isApproved,
       status: group.includes('Sales')
         ? GenerateCouponStatus.APPROVED
-        : GenerateCouponStatus.APPROVED,
+        : GenerateCouponStatus.PENDING,
     };
 
     const response = await API.graphql({
