@@ -17,10 +17,11 @@ export default function EditPackage() {
   const dispatch = useDispatch();
 
   const handlerSubmit = async (event, data) => {
-    event.preventDefault();
+    event.preventDefault();//prevent screen loading
     setIsLoading(true);
     let packages = structuredClone(couponPackages);
     let items = packages.filter((filter) => filter.id === id);
+
     items[0].couponDiscountPackage.items = data.packageDiscounts;
     await updatePackageRepository(data)
       .then((result) => {

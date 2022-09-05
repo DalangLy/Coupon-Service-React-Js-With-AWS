@@ -26,19 +26,15 @@ class FormPackage extends Component {
 
     this.calculateTotal = this.calculateTotal.bind(this);
     this.handlerRemoveDiscountItem = this.handlerRemoveDiscountItem.bind(this);
-    this.handlerChangeDiscountCoupon =
-      this.handlerChangeDiscountCoupon.bind(this);
-    this.handlerChangeDiscountQuantity =
-      this.handlerChangeDiscountQuantity.bind(this);
-    this.handlerChangeDiscountPrice =
-      this.handlerChangeDiscountPrice.bind(this);
-    this.handlerChangeDiscountDiscount =
-      this.handlerChangeDiscountDiscount.bind(this);
+    this.handlerChangeDiscountCoupon = this.handlerChangeDiscountCoupon.bind(this);
+    this.handlerChangeDiscountQuantity = this.handlerChangeDiscountQuantity.bind(this);
+    this.handlerChangeDiscountPrice = this.handlerChangeDiscountPrice.bind(this);
+    this.handlerChangeDiscountDiscount = this.handlerChangeDiscountDiscount.bind(this);
   }
 
   async componentDidMount() {
     if (this.props.id !== undefined && this.props.isEdit) {
-      console.log('hello '+JSON.stringify(this.props))
+      console.log('hello '+JSON.stringify(this.props.packages))
       let data = this.props.packages.filter((e) => e.id === this.props.id);
 
       if (data.length > 0) {
@@ -52,7 +48,7 @@ class FormPackage extends Component {
         data.discount
       );
       let packageDiscounts = [];
-      if (data.couponDiscountPackage.items.length > 0) {
+      if (data.couponDiscountPackage.item != null && data.couponDiscountPackage.items.length > 0) {
         packageDiscounts = data.couponDiscountPackage.items.map((e) => {
           return {
             id: e.id,

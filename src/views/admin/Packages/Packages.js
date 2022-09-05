@@ -1,8 +1,5 @@
 import React, { useRef, useState } from 'react';
-
 import { onNextPagePackages, fetchPackages } from 'reducers/packageReducer';
-
-// components
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Toast } from 'primereact/toast';
