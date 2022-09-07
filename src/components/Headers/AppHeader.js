@@ -41,10 +41,10 @@ export default function AppHeader({ notificationCount, collapseMenu }) {
       </div>
 
       <div className='ml-5 lg:w-3/12 self-center md:w-64'>
-        <span className='p-input-icon-left w-full'>
-          <i className='pi pi-search' />
-          <InputText className='w-full' placeholder='Search' />
-        </span>
+        {/*<span className='p-input-icon-left w-full'>*/}
+        {/*  <i className='pi pi-search' />*/}
+        {/*  <InputText className='w-full' placeholder='Search' />*/}
+        {/*</span>*/}
       </div>
       <div className='ml-5 lg:w-8/12  md:w-64 flex flex-row-reverse'>
         <OverlayPanel ref={op} className='shadow-lg'>
@@ -73,27 +73,27 @@ export default function AppHeader({ notificationCount, collapseMenu }) {
             {auth?.lastName?.charAt(0)?.toUpperCase()}
           </div>
         </div>
-        <div
-          className='self-center px-3 py-2 bg-sky-200 rounded-lg mr-3 cursor-pointer hover:bg-sky-500 hover:text-white transition duration-150 ease-in-out'
-          onClick={(e) => {
-            notificationPopOverlayPanel.current.toggle(e)
-          }}
-        >
-          <i
-            className='pi pi-bell mr-4 p-text-secondary p-overlay-badge'
-            style={{ fontSize: '1rem' }}
-          >
-            <Badge
-              value={notificationCount ?? 0}
-              severity='danger'
-              className='text-xs'
-            ></Badge>
-          </i>
-        </div>
+        {/*<div*/}
+        {/*  className='self-center px-3 py-2 bg-sky-200 rounded-lg mr-3 cursor-pointer hover:bg-sky-500 hover:text-white transition duration-150 ease-in-out'*/}
+        {/*  onClick={(e) => {*/}
+        {/*    notificationPopOverlayPanel.current.toggle(e)*/}
+        {/*  }}*/}
+        {/*>*/}
+        {/*  <i*/}
+        {/*    className='pi pi-bell mr-4 p-text-secondary p-overlay-badge'*/}
+        {/*    style={{ fontSize: '1rem' }}*/}
+        {/*  >*/}
+        {/*    <Badge*/}
+        {/*      value={notificationCount ?? 0}*/}
+        {/*      severity='danger'*/}
+        {/*      className='text-xs'*/}
+        {/*    ></Badge>*/}
+        {/*  </i>*/}
+        {/*</div>*/}
 
-        <OverlayPanel ref={notificationPopOverlayPanel}>
-          // Content
-        </OverlayPanel>
+        {/*<OverlayPanel ref={notificationPopOverlayPanel}>*/}
+        {/*  // Content*/}
+        {/*</OverlayPanel>*/}
       </div>
     </header>
   );

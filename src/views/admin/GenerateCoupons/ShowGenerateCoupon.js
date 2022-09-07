@@ -23,11 +23,11 @@ export default function ShowGenerateCoupon() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    findSaleRepository(id).then((res) => {
-      setSale(res);
-      console.log(res);
-      if (res.serialCoupons?.items?.length > 0) {
-        const data = groupBySerial(res.serialCoupons?.items);
+    findSaleRepository(id).then((saleCouponResponse) => {
+      setSale(saleCouponResponse);
+      if (saleCouponResponse.serialCoupons?.items?.length > 0) {
+        const data = groupBySerial(saleCouponResponse.serialCoupons?.items);
+        console.log('My Serial '+ JSON.stringify(data))
         setSerials(data);
       }
     });
@@ -37,10 +37,10 @@ export default function ShowGenerateCoupon() {
     const groupByCoupon = data.reduce((group, serialCoupons) => {
       const { coupon } = serialCoupons;
       group[coupon.name] = group[coupon.name] ?? [];
-      console.log(serialCoupons?.dateValidEnd);
       group[coupon.name].push({
         code: serialCoupons?.code,
         expired: serialCoupons?.dateValidEnd,
+        deletedAt: serialCoupons?.deletedAt,
       });
       return group;
     }, {});
@@ -238,11 +238,12 @@ export default function ShowGenerateCoupon() {
                           Expired : {coupon?.codes[0]?.expired?.split('T')[0]}
                         </span>
                       </div>
-                      <div className='flex flex-wrap'>
+                      <div className='flex align-content-around flex-wrap'>
+
                         {coupon?.codes?.map(function (serial) {
                           return (
-                            <div className='w-2/12 p-2  ' key={shortid()}>
-                              <div className='border rounded p-3'>
+                            <div className='w-2/12 p-2' key={shortid()}>
+                              <div className='border rounded p-3 '>
                                 <div className=''>
                                   <div
                                     className={`${
@@ -260,10 +261,7 @@ export default function ShowGenerateCoupon() {
                                       {serial?.code}
                                     </span>
 
-                                    <div
-                                      className='tooltip ml-3 pi pi-clone text-gray-500 hover:cursor-pointer'
-                                      onClick={() => copyCode(serial)}
-                                    >
+                                    <div className='tooltip ml-3 pi pi-clone text-gray-500 hover:cursor-pointer' onClick={() => copyCode(serial)}>
                                       <span className='tooltiptext'>Copy</span>
                                     </div>
                                   </div>
@@ -280,8 +278,6 @@ export default function ShowGenerateCoupon() {
             ) : null}
           </div>
         </div>
-
-        {/*  */}
       </div>
     </>
   );

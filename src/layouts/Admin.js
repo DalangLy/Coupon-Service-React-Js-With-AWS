@@ -68,7 +68,7 @@ export default function Admin() {
       <ConfirmDialog
         visible={auth.userType.length === 0}
         message='Please contact administrator!'
-        header='Unauthorize'
+        header='Unauthorized'
         icon='pi pi-exclamation-triangle'
         accept={() => {}}
         acceptLabel='Confirm'
