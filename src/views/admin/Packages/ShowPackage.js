@@ -115,11 +115,11 @@ export default function ShowCoupon() {
                     {dpackage?.coupons?.name}
                   </th>
                   <td className='px-6 py-4 font-medium text-black'>
-                    {dpackage?.coupons?.price}
+                    {dpackage?.coupons?.price} $
                   </td>
 
                   <td className='px-6 py-4 font-medium text-black'>
-                    {dpackage?.coupons?.period} / Months
+                    {dpackage?.coupons?.period} Months
                   </td>
                   <td className='px-6 py-4 font-medium text-black'>
                     {dpackage?.coupons?.description}
@@ -129,29 +129,29 @@ export default function ShowCoupon() {
             </table>
           </div>
 
-          <hr />
-          <div className='relative overflow-x-auto shadow-md sm:rounded-lg mt-10'>
-            <table className='w-full text-sm text-left text-gray-500 dark:text-gray-400'>
-              <thead className='text-xs text-gray-700 uppercase bg-gray-50 bg-gray-100 text-gray-400'>
-                <tr>
-                  <th scope='col' className='px-6 py-3'>
-                    Coupon name
-                  </th>
+          {/*<hr />*/}
+          {/*<div className='relative overflow-x-auto shadow-md sm:rounded-lg mt-10'>*/}
+          {/*  <table className='w-full text-sm text-left text-gray-500 dark:text-gray-400'>*/}
+          {/*    <thead className='text-xs text-gray-700 uppercase bg-gray-50 bg-gray-100 text-gray-400'>*/}
+          {/*      <tr>*/}
+          {/*        <th scope='col' className='px-6 py-3'>*/}
+          {/*          Coupon name*/}
+          {/*        </th>*/}
 
-                  <th scope='col' className='px-6 py-3'>
-                    Price
-                  </th>
-                  <th scope='col' className='px-6 py-3'>
-                    Quantity
-                  </th>
-                  <th scope='col' className='px-6 py-3'>
-                    Discount
-                  </th>
-                  <th scope='col' className='px-6 py-3'>
-                    Description
-                  </th>
-                </tr>
-              </thead>
+          {/*        <th scope='col' className='px-6 py-3'>*/}
+          {/*          Price*/}
+          {/*        </th>*/}
+          {/*        <th scope='col' className='px-6 py-3'>*/}
+          {/*          Quantity*/}
+          {/*        </th>*/}
+          {/*        <th scope='col' className='px-6 py-3'>*/}
+          {/*          Discount*/}
+          {/*        </th>*/}
+          {/*        <th scope='col' className='px-6 py-3'>*/}
+          {/*          Description*/}
+          {/*        </th>*/}
+          {/*      </tr>*/}
+          {/*    </thead>*/}
               {/*<h1>{JSON.stringify(dpackage.couponDiscountPackage)}</h1>*/}
               {/*<tbody>*/}
               {/*  {dpackage?.couponDiscountPackage !== undefined &&*/}
@@ -190,11 +190,9 @@ export default function ShowCoupon() {
               {/*    <></>*/}
               {/*  )}*/}
               {/*</tbody>*/}
-            </table>
-          </div>
+            {/*</table>*/}
+          {/*</div>*/}
         </div>
-
-        {/*  */}
       </div>
     </>
   );

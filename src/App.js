@@ -6,7 +6,7 @@ import Login from 'views/auth/Login';
 import NotFound from 'views/NotFound';
 import PrivateRoute from 'views/auth/PrivateRoute';
 import amplifyConfig from './aws-exports';
-import Amplify, { Auth } from 'aws-amplify';
+import Amplify  from 'aws-amplify';
 // import Register from 'views/auth/Register';
 import { useLottie } from 'lottie-react';
 import loadingPage from './lotties/83491-loading.json';
