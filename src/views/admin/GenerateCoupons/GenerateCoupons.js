@@ -159,6 +159,15 @@ export default function GenerateCoupons() {
                 sortField='createdAt'
                 filterElement={DateFilterTemplate}
               />,
+                // <Column
+                //     key={'createdAt'}
+                //     header='Created At'
+                //     style={{ minWidth: '10rem' }}
+                //     body={bodyDateTemplate}
+                //     sortable
+                //     sortField='createdAt'
+                //     filterElement={DateFilterTemplate}
+                // />,
               <Column
                 key={shortid()}
                 header='Action'

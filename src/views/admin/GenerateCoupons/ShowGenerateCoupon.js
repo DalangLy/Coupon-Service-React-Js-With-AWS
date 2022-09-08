@@ -10,6 +10,10 @@ import LoadingDialog from 'components/Dialogs/LoadingDialog';
 import resendMailRepository from 'repository/sale/resendMailGenerateCouponRepository';
 import findSaleRepository from 'repository/sale/findSaleRepository';
 import { GenerateCouponStatus } from 'config/constants';
+import { Tooltip } from 'primereact/tooltip';
+import { Dialog } from 'primereact/dialog';
+import { Button } from 'primereact/button';
+import {QRCodeCanvas} from "qrcode.react";
 
 export default function ShowGenerateCoupon() {
   const userType = useSelector((state) => state.auth.userType);
@@ -22,16 +26,27 @@ export default function ShowGenerateCoupon() {
 
   const dispatch = useDispatch();
 
+  const [displayResponsive, setDisplayResponsive] = useState(false);
+  const [selectedCouponCodeForGenerateQR, setSelectedCouponCodeForGenerateQR] = useState();
+
   useEffect(() => {
     findSaleRepository(id).then((saleCouponResponse) => {
       setSale(saleCouponResponse);
       if (saleCouponResponse.serialCoupons?.items?.length > 0) {
         const data = groupBySerial(saleCouponResponse.serialCoupons?.items);
-        console.log('My Serial '+ JSON.stringify(data))
         setSerials(data);
       }
     });
   }, []);
+
+  const showCouponQRDialog = (couponCode) => {
+    setDisplayResponsive(true)
+    setSelectedCouponCodeForGenerateQR(couponCode)
+  }
+
+  const onHide = (name) => {
+    setDisplayResponsive(false)
+  }
 
   const groupBySerial = (data) => {
     const groupByCoupon = data.reduce((group, serialCoupons) => {
@@ -85,14 +100,23 @@ export default function ShowGenerateCoupon() {
     }
   };
 
-  function directToQRCode(serial) {
-    history.push('/admin/qrcode/' + serial?.code);
+  async function copyCouponCodeToClipboard(couponCode) {
+    await navigator.clipboard.writeText(couponCode);
   }
 
-  async function copyCode(serial) {
-    console.log(serial);
-    await navigator.clipboard.writeText(serial?.code);
-  }
+  const downloadGeneratedCouponQRCode = () => {
+    // Generate download with use canvas and stream
+    const canvas = document.getElementById('qr-gen');
+    const pngUrl = canvas
+        .toDataURL('image/png')
+        .replace('image/png', 'image/octet-stream');
+    let downloadLink = document.createElement('a');
+    downloadLink.href = pngUrl;
+    downloadLink.download = `${Date.now()}.png`;
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+    document.body.removeChild(downloadLink);
+  };
 
   return (
     <>
@@ -243,29 +267,16 @@ export default function ShowGenerateCoupon() {
                         {coupon?.codes?.map(function (serial) {
                           return (
                             <div className='w-2/12 p-2' key={shortid()}>
-                              <div className='border rounded p-3 '>
-                                <div className=''>
-                                  <div
-                                    className={`${
-                                      serial?.deletedAt ? 'bg-red-200' : ''
-                                    }   rounded  `}
-                                  >
-                                    <span
-                                      onClick={() => directToQRCode(serial)}
-                                      className={`${
-                                        serial?.deletedAt
-                                          ? 'bg-red-200'
-                                          : 'hover:underline underline-offset-1'
-                                      } hover:cursor-pointer `}
-                                    >
-                                      {serial?.code}
-                                    </span>
 
-                                    <div className='tooltip ml-3 pi pi-clone text-gray-500 hover:cursor-pointer' onClick={() => copyCode(serial)}>
-                                      <span className='tooltiptext'>Copy</span>
-                                    </div>
-                                  </div>
-                                </div>
+                              <div className={`${serial.deletedAt ? 'bg-red-800 text-white' : ''} flex justify-between border rounded p-3`}>
+                                <span className={`flex align-items-center justify-content-center`}>{serial.code}</span>
+
+                                <span>
+                                  <Tooltip target=".custom-coupon-icon" className="p-tooltip-text shadow-none"/>
+                                  <i onClick={() => showCouponQRDialog(serial.code)} className="custom-coupon-icon pi pi-qrcode p-1 cursor-pointer mr-2" data-pr-tooltip="Show QR"></i>
+                                  <i onClick={() => copyCouponCodeToClipboard(serial.code)} className="custom-coupon-icon pi pi-clone p-1 cursor-pointer ml-2" data-pr-tooltip="Copy Code"></i>
+                                </span>
+
                               </div>
                             </div>
                           );
@@ -279,6 +290,29 @@ export default function ShowGenerateCoupon() {
           </div>
         </div>
       </div>
+
+
+
+      {/*Coupon QR Code Dialog*/}
+      <Dialog header={`Coupon QR Code (${selectedCouponCodeForGenerateQR})`} visible={displayResponsive} onHide={() => onHide('displayResponsive')} breakpoints={{'960px': '75vw'}} style={{width: '30vw'}} >
+        <div className='flex flex-col justify-content-center align-content-center'>
+
+          <QRCodeCanvas
+              className='flex align-items-center justify-content-center'
+              id='qr-gen'
+              value={selectedCouponCodeForGenerateQR}
+              size={300}
+              style={{ margin: 'auto' }}
+              includeMargin={6}
+          />
+
+          <Button onClick={downloadGeneratedCouponQRCode} className="google p-0 text-center flex align-items-center justify-content-center" aria-label="Download">
+            <i className="pi pi-download px-2"></i>
+            <span className="px-3">Click here to download</span>
+          </Button>
+        </div>
+      </Dialog>
+
     </>
   );
 }

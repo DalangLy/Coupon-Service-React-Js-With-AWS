@@ -304,7 +304,7 @@ class FormGenerateCoupon extends Component {
                   className='block uppercase text-blueGray-600 text-xs font-bold mb-2'
                   htmlFor={`grid-coupon`}
                 >
-                  Discount
+                  Description
                   <span className='text-red-600'>*</span>
                 </label>
                 <textarea
