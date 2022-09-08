@@ -12,7 +12,6 @@ import GenerateCouponReport from 'views/admin/Reports/GenerateCouponReports';
 import Profile from 'views/Profile';
 import SettingView from 'views/admin/Setting/SettingView';
 import NotFound from 'views/NotFound';
-import QRCodeView from 'views/admin/QRCodes/QRCodeView';
 import VerifyTicketPage from 'views/admin/VerifyTickets/VerifyTicketPage';
 import CloseTicketPage from 'views/admin/CloseTickets/CloseTicketPage';
 import Dashboard from 'views/admin/Dashboard';
@@ -85,10 +84,6 @@ const appRoutes = (group) => {
     {
       path: '/admin/settings',
       component: group.includes('Administrators') ? SettingView : NotFound,
-    },
-    {
-      path: '/admin/qrcode/:id',
-      component: QRCodeView,
     },
   ];
 };

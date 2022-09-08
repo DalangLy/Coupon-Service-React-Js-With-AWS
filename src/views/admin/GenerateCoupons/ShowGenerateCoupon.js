@@ -294,17 +294,14 @@ export default function ShowGenerateCoupon() {
 
 
       {/*Coupon QR Code Dialog*/}
-      <Dialog header={`Coupon QR Code (${selectedCouponCodeForGenerateQR})`} visible={displayResponsive} onHide={() => onHide('displayResponsive')} breakpoints={{'960px': '75vw'}} style={{width: '30vw'}} >
+      <Dialog header={`Coupon QR Code (${selectedCouponCodeForGenerateQR})`} visible={displayResponsive} onHide={() => onHide('displayResponsive')} breakpoints={{'960px': '75vw'}} style={{width: '25vw'}} >
         <div className='flex flex-col justify-content-center align-content-center'>
 
-          <QRCodeCanvas
-              className='flex align-items-center justify-content-center'
+          <QRCodeCanvas className='flex align-items-center justify-content-center m-auto'
               id='qr-gen'
               value={selectedCouponCodeForGenerateQR}
               size={300}
-              style={{ margin: 'auto' }}
-              includeMargin={6}
-          />
+              includeMargin={6}/>
 
           <Button onClick={downloadGeneratedCouponQRCode} className="google p-0 text-center flex align-items-center justify-content-center" aria-label="Download">
             <i className="pi pi-download px-2"></i>
