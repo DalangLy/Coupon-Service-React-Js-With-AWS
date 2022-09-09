@@ -48,7 +48,7 @@ export default function ShowCoupon() {
                 </div>
               </div>
               <div className='w-full lg:w-6/12 px-4'>
-                <div className='relative w-full mb-3'>{dpackage.price}</div>
+                <div className='relative w-full mb-3'>{dpackage.price} $</div>
               </div>
             </div>
             <div className='flex flex-wrap'>
@@ -68,7 +68,7 @@ export default function ShowCoupon() {
                 </div>
               </div>
               <div className='w-full lg:w-6/12 px-4'>
-                <div className='relative w-full mb-3'>{dpackage.discount}</div>
+                <div className='relative w-full mb-3'>{dpackage.discount} %</div>
               </div>
             </div>
             <div className='flex flex-wrap'>
@@ -129,69 +129,67 @@ export default function ShowCoupon() {
             </table>
           </div>
 
-          {/*<hr />*/}
-          {/*<div className='relative overflow-x-auto shadow-md sm:rounded-lg mt-10'>*/}
-          {/*  <table className='w-full text-sm text-left text-gray-500 dark:text-gray-400'>*/}
-          {/*    <thead className='text-xs text-gray-700 uppercase bg-gray-50 bg-gray-100 text-gray-400'>*/}
-          {/*      <tr>*/}
-          {/*        <th scope='col' className='px-6 py-3'>*/}
-          {/*          Coupon name*/}
-          {/*        </th>*/}
+          <hr />
+          <div className='relative overflow-x-auto shadow-md sm:rounded-lg mt-10'>
+            <table className='w-full text-sm text-left text-gray-500 dark:text-gray-400'>
+              <thead className='text-xs text-gray-700 uppercase bg-gray-50 bg-gray-100 text-gray-400'>
+                <tr>
+                  <th scope='col' className='px-6 py-3'>
+                    Coupon name
+                  </th>
 
-          {/*        <th scope='col' className='px-6 py-3'>*/}
-          {/*          Price*/}
-          {/*        </th>*/}
-          {/*        <th scope='col' className='px-6 py-3'>*/}
-          {/*          Quantity*/}
-          {/*        </th>*/}
-          {/*        <th scope='col' className='px-6 py-3'>*/}
-          {/*          Discount*/}
-          {/*        </th>*/}
-          {/*        <th scope='col' className='px-6 py-3'>*/}
-          {/*          Description*/}
-          {/*        </th>*/}
-          {/*      </tr>*/}
-          {/*    </thead>*/}
-              {/*<h1>{JSON.stringify(dpackage.couponDiscountPackage)}</h1>*/}
-              {/*<tbody>*/}
-              {/*  {dpackage?.couponDiscountPackage !== undefined &&*/}
-              {/*  dpackage?.couponDiscountPackage !== null &&*/}
-              {/*      dpackage?.couponDiscountPackage != {}*/}
-              {/*      ? (*/}
-              {/*    dpackage.couponDiscountPackage.items.map((e, index) => {*/}
-              {/*      const coupon = coupons.filter(*/}
-              {/*        (filter) => filter.id === e.couponDiscountPackageCouponId*/}
-              {/*      );*/}
-              {/*      return (*/}
-              {/*        <tr*/}
-              {/*          className='bg-white border-b dark:bg-gray-800 dark:border-gray-700'*/}
-              {/*          key={index}*/}
-              {/*        >*/}
-              {/*          <th*/}
-              {/*            scope='row'*/}
-              {/*            className='px-6 py-4 font-medium text-black'*/}
-              {/*          >*/}
-              {/*            {coupon.length > 0 ? coupon[0].name : '-'}*/}
-              {/*          </th>*/}
-              {/*          <td className='px-6 py-4 font-medium text-black'>*/}
-              {/*            {e.price}*/}
-              {/*          </td>*/}
-              {/*          <td className='px-6 py-4 font-medium text-black'>*/}
-              {/*            {e.quantity}*/}
-              {/*          </td>*/}
-              {/*          <td className='px-6 py-4 font-medium text-black'>*/}
-              {/*            {e.discount} %*/}
-              {/*          </td>*/}
-              {/*          <td className='px-6 py-4 font-medium text-black'>-</td>*/}
-              {/*        </tr>*/}
-              {/*      );*/}
-              {/*    })*/}
-              {/*  ) : (*/}
-              {/*    <></>*/}
-              {/*  )}*/}
-              {/*</tbody>*/}
-            {/*</table>*/}
-          {/*</div>*/}
+                  <th scope='col' className='px-6 py-3'>
+                    Price
+                  </th>
+                  <th scope='col' className='px-6 py-3'>
+                    Quantity
+                  </th>
+                  <th scope='col' className='px-6 py-3'>
+                    Discount
+                  </th>
+                  <th scope='col' className='px-6 py-3'>
+                    Description
+                  </th>
+                </tr>
+              </thead>
+
+              <tbody>
+                {dpackage?.couponDiscountPackage !== undefined
+                    ? (
+                  dpackage.couponDiscountPackage.items.map((e, index) => {
+                    const coupon = coupons.filter(
+                      (filter) => filter.id === e.couponDiscountPackageCouponId
+                    );
+                    return (
+                      <tr
+                        className='bg-white dark:bg-gray-800 dark:border-gray-700'
+                        key={index}
+                      >
+                        <th
+                          scope='row'
+                          className='px-6 py-4 font-medium text-black'
+                        >
+                          {coupon.length > 0 ? coupon[0].name : '-'}
+                        </th>
+                        <td className='px-6 py-4 font-medium text-black'>
+                          {e.price} $
+                        </td>
+                        <td className='px-6 py-4 font-medium text-black'>
+                          {e.quantity}
+                        </td>
+                        <td className='px-6 py-4 font-medium text-black'>
+                          {e.discount} %
+                        </td>
+                        <td className='px-6 py-4 font-medium text-black'>-</td>
+                      </tr>
+                    );
+                  })
+                ) : (
+                  <></>
+                )}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </>

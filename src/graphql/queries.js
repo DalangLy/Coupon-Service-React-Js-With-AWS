@@ -284,7 +284,17 @@ export const listPackages = /* GraphQL */ `
           couponCreatorId
         }
         couponDiscountPackage {
-          nextToken
+          nextToken,
+          items {
+            id,
+            price,
+            quantity,
+            couponDiscountPackageCouponId,
+            coupon {
+              id,
+              name
+            }
+          },
         }
         createdAt
         updatedAt
