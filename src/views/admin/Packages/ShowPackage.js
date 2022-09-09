@@ -9,14 +9,14 @@ export default function ShowCoupon() {
   const [dpackage, setPackage] = useState({});
 
   //take id param from url
-  const { id } = useParams();
+  const { id: idFromUrl } = useParams();
 
   useEffect(() => {
-    const data = packages.filter((e) => e.id === id);
+    const data = packages.filter((e) => e.id === idFromUrl);
     if (data.length > 0) {
       setPackage(data[0]);
     }
-  }, [packages, id]);
+  }, [packages, idFromUrl]);
 
   return (
     <>
