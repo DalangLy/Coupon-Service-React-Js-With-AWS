@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-// componentsP
+// components
 import MainBody from 'components/Main/MainBody';
 import { ConfirmDialog } from 'primereact/confirmdialog';
 // route
@@ -24,7 +24,7 @@ export default function Admin() {
   const dispatch = useDispatch();
   const [collapseMenu, setCollapseMenu] = useState(false);
   const [collapseMenuMobile, setCollapseMenuMobile] = useState(false);
-  const dashbaordReducer = useSelector((state) => state.dashboard);
+  const dashboardReducer = useSelector((state) => state.dashboard);
   const isLoadingCoupon = useSelector((state) => state.coupons.isLoading);
   const isLoadingPackage = useSelector((state) => state.packages.isLoading);
   const isLoadingSale = useSelector((state) => state.sales.isLoading);
@@ -76,7 +76,7 @@ export default function Admin() {
       />
 
       <AppHeader
-        notificationCount={dashbaordReducer.notificationsCount}
+        notificationCount={dashboardReducer.notificationsCount}
         collapseMenu={() => {
           if (width > 900) {
             setCollapseMenu(!collapseMenu);

@@ -29,7 +29,7 @@ export default async function resendMailRepository(
 
         const expired =
           dateValidEnd === null ? '-' : dateValidEnd.split('T')[0];
-        const isRowspan = index === 0 ? true : false;
+        const isRowspan = index === 0;
         const dataCell = rowMailTemplate(isRowspan, coupon?.codes?.length);
 
         rows += dataCell

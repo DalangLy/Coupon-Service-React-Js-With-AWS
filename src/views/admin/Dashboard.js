@@ -1,9 +1,7 @@
 import React from 'react';
 
 // components
-
 import CardLineChart from 'components/Cards/CardLineChart.js';
-// import CardBarChart from 'components/Cards/CardBarChart.js';
 import HeaderStats from 'components/Headers/HeaderStats.js';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
