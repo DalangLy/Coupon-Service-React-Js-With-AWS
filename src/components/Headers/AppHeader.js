@@ -69,7 +69,7 @@ export default function AppHeader({ notificationCount, collapseMenu }) {
         >
           <i className='pi pi-cog mr-3'></i>
           <div>
-            {`${auth.firstName} ${auth.lastName}`}
+            {`${auth?.firstName} ${auth?.lastName}`}
             {/*{auth?.firstName?.charAt(0)?.toUpperCase()}*/}
             {/*{auth?.lastName?.charAt(0)?.toUpperCase()}*/}
           </div>

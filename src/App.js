@@ -35,13 +35,14 @@ export default function App() {
   const { View } = useLottie(options);
 
   async function getUserAuth() {
-    await setTimeout(async () => {
+    setTimeout(async () => {
       await getCurrentAuthenticatedUser()
-        .then((res) => {
-          setAuthenticated(true);
-          if (loading) dispatch(authGetUser(res));
-        })
-        .catch((e) => {});
+          .then((res) => {
+            setAuthenticated(true);
+            if (loading) dispatch(authGetUser(res));
+          })
+          .catch((e) => {
+          });
       setIsInitPage(false);
     }, 1000);
   }

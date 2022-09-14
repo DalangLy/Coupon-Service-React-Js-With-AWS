@@ -118,6 +118,8 @@ export default function ShowGenerateCoupon() {
     document.body.removeChild(downloadLink);
   };
 
+  const [saveBtnTooltipText, setSaveBtnTooltipText] = useState('Copy');
+
   return (
     <>
       <LoadingDialog visible={isLoading} />
@@ -265,6 +267,8 @@ export default function ShowGenerateCoupon() {
                       <div className='flex align-content-around flex-wrap'>
 
                         {coupon?.codes?.map(function (serial) {
+                          serial.isCopied = false;
+
                           return (
                             <div className='w-2/12 p-2' key={shortid()}>
 
@@ -273,8 +277,12 @@ export default function ShowGenerateCoupon() {
 
                                 <span>
                                   <Tooltip target=".custom-coupon-icon" className="p-tooltip-text shadow-none"/>
-                                  <i onClick={() => showCouponQRDialog(serial.code)} className="custom-coupon-icon pi pi-qrcode p-1 cursor-pointer mr-2" data-pr-tooltip="Show QR"></i>
-                                  <i onClick={() => copyCouponCodeToClipboard(serial.code)} className="custom-coupon-icon pi pi-clone p-1 cursor-pointer ml-2" data-pr-tooltip="Copy Code"></i>
+                                  <i onMouseLeave={() => setSaveBtnTooltipText('Copy')} onClick={() => showCouponQRDialog(serial.code)} className="custom-coupon-icon pi pi-qrcode p-1 cursor-pointer mr-2" data-pr-tooltip="Show QR"></i>
+                                  <i onClick={() => {
+                                    copyCouponCodeToClipboard(serial.code).then(x => {
+                                      setSaveBtnTooltipText('Copied')
+                                    })
+                                  }} className="custom-coupon-icon pi pi-clone p-1 cursor-pointer ml-2" data-pr-tooltip={saveBtnTooltipText}></i>
                                 </span>
 
                               </div>
