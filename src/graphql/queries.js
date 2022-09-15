@@ -284,17 +284,7 @@ export const listPackages = /* GraphQL */ `
           couponCreatorId
         }
         couponDiscountPackage {
-          nextToken,
-          items {
-            id,
-            price,
-            quantity,
-            couponDiscountPackageCouponId,
-            coupon {
-              id,
-              name
-            }
-          },
+          nextToken
         }
         createdAt
         updatedAt
@@ -530,6 +520,23 @@ export const getSaleCoupon = /* GraphQL */ `
         discount
         description
         deletedAt
+        creator {
+          id
+          firstName
+          lastName
+          email
+          phone
+          jobTitle
+          company
+          companyAddress
+          note
+          groups
+          status
+          deletedAt
+          createdAt
+          updatedAt
+          owner
+        }
         coupons {
           id
           name
@@ -572,11 +579,6 @@ export const getSaleCoupon = /* GraphQL */ `
           saleCouponSerialCouponsId
           couponSerialCodeCouponId
           couponSerialCodeOwnerId
-          coupon {
-            id
-            name
-            description
-          }
         }
         nextToken
       }
@@ -673,24 +675,7 @@ export const listSaleCoupons = /* GraphQL */ `
         status
         deletedAt
         serialCoupons {
-          items {
-            code
-            couponSerialCodeCouponId
-            couponSerialCodeOwnerId
-            createdAt
-            dateValidEnd
-            dateValidStart
-            deletedAt
-            id
-            price
-            saleCouponSerialCouponsId
-            updatedAt
-            coupon {
-              id
-              name
-              description
-            }
-          }
+          nextToken
         }
         createdAt
         updatedAt
@@ -976,15 +961,6 @@ export const listCouponApplieds = /* GraphQL */ `
           saleCouponSerialCouponsId
           couponSerialCodeCouponId
           couponSerialCodeOwnerId
-          owner {
-            firstName
-            lastName
-            email
-            companyAddress
-            company
-            phone
-            jobTitle
-          }
         }
         note
         coupon {
@@ -1069,6 +1045,43 @@ export const listSettings = /* GraphQL */ `
         body
         createdAt
         updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getNotification = /* GraphQL */ `
+  query GetNotification($id: ID!) {
+    getNotification(id: $id) {
+      id
+      type
+      userId
+      title
+      body
+      status
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
+export const listNotifications = /* GraphQL */ `
+  query ListNotifications(
+    $filter: ModelNotificationFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listNotifications(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        type
+        userId
+        title
+        body
+        status
+        createdAt
+        updatedAt
+        owner
       }
       nextToken
     }
@@ -1199,41 +1212,6 @@ export const listPackageCouponDiscounts = /* GraphQL */ `
           packageCouponDiscountPackageId
           couponDiscountPackageCouponId
         }
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
-  }
-`;
-export const getNotification = /* GraphQL */ `
-  query GetNotification($id: ID!) {
-    getNotification(id: $id) {
-      id
-      type
-      userId
-      title
-      body
-      status
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const listNotifications = /* GraphQL */ `
-  query ListNotifications(
-    $filter: ModelNotificationFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listNotifications(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        type
-        userId
-        title
-        body
-        status
         createdAt
         updatedAt
       }

@@ -33,8 +33,8 @@ export default function ShowGenerateCoupon() {
     findSaleRepository(id).then((saleCouponResponse) => {
       setSale(saleCouponResponse);
       if (saleCouponResponse.serialCoupons?.items?.length > 0) {
-        const data = groupBySerial(saleCouponResponse.serialCoupons?.items);
-        setSerials(data);
+        //const data = groupBySerial(saleCouponResponse.serialCoupons?.items);
+        setSerials(saleCouponResponse.serialCoupons?.items);
       }
     });
   }, []);
@@ -48,23 +48,23 @@ export default function ShowGenerateCoupon() {
     setDisplayResponsive(false)
   }
 
-  const groupBySerial = (data) => {
-    const groupByCoupon = data.reduce((group, serialCoupons) => {
-      const { coupon } = serialCoupons;
-      group[coupon.name] = group[coupon.name] ?? [];
-      group[coupon.name].push({
-        code: serialCoupons?.code,
-        expired: serialCoupons?.dateValidEnd,
-        deletedAt: serialCoupons?.deletedAt,
-      });
-      return group;
-    }, {});
-
-    return Object.entries(groupByCoupon).map((value) => ({
-      name: value[0],
-      codes: value[1],
-    }));
-  };
+  // const groupBySerial = (data) => {
+  //   const groupByCoupon = data.reduce((group, serialCoupons) => {
+  //     const { coupon } = serialCoupons;
+  //     group[coupon.name] = group[coupon.name] ?? [];
+  //     group[coupon.name].push({
+  //       code: serialCoupons?.code,
+  //       expired: serialCoupons?.dateValidEnd,
+  //       deletedAt: serialCoupons?.deletedAt,
+  //     });
+  //     return group;
+  //   }, {});
+  //
+  //   return Object.entries(groupByCoupon).map((value) => ({
+  //     name: value[0],
+  //     codes: value[1],
+  //   }));
+  // };
 
   const handlerApproveRequest = async () => {
     setIsLoading(true);
@@ -253,29 +253,30 @@ export default function ShowGenerateCoupon() {
                 </div>
               </div>
             </div>
-            {sale?.saleCouponApproverId && !sale?.deletedAt ? (
-              <div className='w-full flex flex-wrap p-4 border border-dashed mt-3'>
-                {serials?.map((coupon) => {
-                  return (
-                    <div className='w-full' key={shortid()}>
-                      <div className='font-medium mb-2'>
-                        {coupon?.name}{' '}
-                        <span className='ml-3 bg-sky-200 p-1 text-sm rounded'>
-                          Expired : {coupon?.codes[0]?.expired?.split('T')[0]}
-                        </span>
-                      </div>
-                      <div className='flex align-content-around flex-wrap'>
 
-                        {coupon?.codes?.map(function (serial) {
-                          serial.isCopied = false;
 
-                          return (
-                            <div className='w-2/12 p-2' key={shortid()}>
 
-                              <div className={`${serial.deletedAt ? 'bg-red-800 text-white' : ''} flex justify-between border rounded p-3`}>
-                                <span className={`flex align-items-center justify-content-center`}>{serial.code}</span>
 
-                                <span>
+            <div className='w-full flex flex-wrap p-4 border border-dashed mt-3'>
+              <div className='w-full' key={shortid()}>
+                <div className='font-medium mb-2'>
+                  {sale?.package?.coupons.name}
+                  <span className='ml-3 bg-sky-200 p-1 text-sm rounded'>
+                    Expired : {
+                      new Date(new Date(sale?.package?.coupons.createdAt).setMonth(new Date(sale?.package?.coupons.createdAt).getMonth()+sale?.package?.coupons.period)).toDateString()
+                    }
+                  </span>
+                </div>
+                <div className='flex align-content-around flex-wrap'>
+
+                  {serials?.map(function (serial) {
+                    return (
+                        <div className='w-2/12 p-2' key={shortid()}>
+
+                          <div className={`${serial.deletedAt ? 'bg-red-800 text-white' : ''} flex justify-between border rounded p-3`}>
+                            <span className={`flex align-items-center justify-content-center`}>{serial.code}</span>
+
+                            <span>
                                   <Tooltip target=".custom-coupon-icon" className="p-tooltip-text shadow-none"/>
                                   <i onMouseLeave={() => setSaveBtnTooltipText('Copy')} onClick={() => showCouponQRDialog(serial.code)} className="custom-coupon-icon pi pi-qrcode p-1 cursor-pointer mr-2" data-pr-tooltip="Show QR"></i>
                                   <i onClick={() => {
@@ -285,16 +286,16 @@ export default function ShowGenerateCoupon() {
                                   }} className="custom-coupon-icon pi pi-clone p-1 cursor-pointer ml-2" data-pr-tooltip={saveBtnTooltipText}></i>
                                 </span>
 
-                              </div>
-                            </div>
-                          );
-                        })}
-                      </div>
-                    </div>
-                  );
-                })}
+                          </div>
+                        </div>
+                    );
+                  })}
+                </div>
               </div>
-            ) : null}
+            </div>
+
+
+
           </div>
         </div>
       </div>

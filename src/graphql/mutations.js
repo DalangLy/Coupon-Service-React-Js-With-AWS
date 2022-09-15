@@ -1906,6 +1906,60 @@ export const deleteSetting = /* GraphQL */ `
     }
   }
 `;
+export const createNotification = /* GraphQL */ `
+  mutation CreateNotification(
+    $input: CreateNotificationInput!
+    $condition: ModelNotificationConditionInput
+  ) {
+    createNotification(input: $input, condition: $condition) {
+      id
+      type
+      userId
+      title
+      body
+      status
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
+export const updateNotification = /* GraphQL */ `
+  mutation UpdateNotification(
+    $input: UpdateNotificationInput!
+    $condition: ModelNotificationConditionInput
+  ) {
+    updateNotification(input: $input, condition: $condition) {
+      id
+      type
+      userId
+      title
+      body
+      status
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
+export const deleteNotification = /* GraphQL */ `
+  mutation DeleteNotification(
+    $input: DeleteNotificationInput!
+    $condition: ModelNotificationConditionInput
+  ) {
+    deleteNotification(input: $input, condition: $condition) {
+      id
+      type
+      userId
+      title
+      body
+      status
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
 export const createPackageCouponDiscounts = /* GraphQL */ `
   mutation CreatePackageCouponDiscounts(
     $input: CreatePackageCouponDiscountsInput!
@@ -2168,57 +2222,6 @@ export const deletePackageCouponDiscounts = /* GraphQL */ `
         packageCouponDiscountPackageId
         couponDiscountPackageCouponId
       }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const createNotification = /* GraphQL */ `
-  mutation CreateNotification(
-    $input: CreateNotificationInput!
-    $condition: ModelNotificationConditionInput
-  ) {
-    createNotification(input: $input, condition: $condition) {
-      id
-      type
-      userId
-      title
-      body
-      status
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const updateNotification = /* GraphQL */ `
-  mutation UpdateNotification(
-    $input: UpdateNotificationInput!
-    $condition: ModelNotificationConditionInput
-  ) {
-    updateNotification(input: $input, condition: $condition) {
-      id
-      type
-      userId
-      title
-      body
-      status
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const deleteNotification = /* GraphQL */ `
-  mutation DeleteNotification(
-    $input: DeleteNotificationInput!
-    $condition: ModelNotificationConditionInput
-  ) {
-    deleteNotification(input: $input, condition: $condition) {
-      id
-      type
-      userId
-      title
-      body
-      status
       createdAt
       updatedAt
     }

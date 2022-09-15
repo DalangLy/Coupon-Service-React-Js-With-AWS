@@ -1834,6 +1834,51 @@ export const onDeleteSetting = /* GraphQL */ `
     }
   }
 `;
+export const onCreateNotification = /* GraphQL */ `
+  subscription OnCreateNotification($owner: String) {
+    onCreateNotification(owner: $owner) {
+      id
+      type
+      userId
+      title
+      body
+      status
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
+export const onUpdateNotification = /* GraphQL */ `
+  subscription OnUpdateNotification($owner: String) {
+    onUpdateNotification(owner: $owner) {
+      id
+      type
+      userId
+      title
+      body
+      status
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
+export const onDeleteNotification = /* GraphQL */ `
+  subscription OnDeleteNotification($owner: String) {
+    onDeleteNotification(owner: $owner) {
+      id
+      type
+      userId
+      title
+      body
+      status
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
 export const onCreatePackageCouponDiscounts = /* GraphQL */ `
   subscription OnCreatePackageCouponDiscounts {
     onCreatePackageCouponDiscounts {
@@ -2087,48 +2132,6 @@ export const onDeletePackageCouponDiscounts = /* GraphQL */ `
         packageCouponDiscountPackageId
         couponDiscountPackageCouponId
       }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onCreateNotification = /* GraphQL */ `
-  subscription OnCreateNotification {
-    onCreateNotification {
-      id
-      type
-      userId
-      title
-      body
-      status
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onUpdateNotification = /* GraphQL */ `
-  subscription OnUpdateNotification {
-    onUpdateNotification {
-      id
-      type
-      userId
-      title
-      body
-      status
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onDeleteNotification = /* GraphQL */ `
-  subscription OnDeleteNotification {
-    onDeleteNotification {
-      id
-      type
-      userId
-      title
-      body
-      status
       createdAt
       updatedAt
     }

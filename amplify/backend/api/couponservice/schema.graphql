@@ -234,7 +234,16 @@ type Setting
   body: AWSJSON!
 }
 
-type Notification @model @auth(rules: [{ allow: public }]) {
+type Notification @model @auth(rules: [
+  { allow: owner, ownerField: "owner", operations: [create, update, read] }
+  {
+    allow: groups
+    groups: ["Administrators"]
+    operations: [create, update, read, delete]
+  }
+  { allow: groups, groups: ["Sales"], operations: [create, update, read] }
+  { allow: groups, groups: ["Finances"], operations: [read] }
+]) {
   id: ID!
   type: String!
   userId: String!
