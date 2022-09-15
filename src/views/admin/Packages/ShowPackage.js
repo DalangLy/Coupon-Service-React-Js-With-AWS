@@ -156,7 +156,7 @@ export default function ShowCoupon() {
               <tbody>
                 {dpackage?.couponDiscountPackage !== undefined
                     ? (
-                  dpackage.couponDiscountPackage.items.map((e, index) => {
+                  dpackage?.couponDiscountPackage?.items?.map((e, index) => {
                     const coupon = coupons.filter(
                       (filter) => filter.id === e.couponDiscountPackageCouponId
                     );
