@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import { InputText } from 'primereact/inputtext';
 import { OverlayPanel } from 'primereact/overlaypanel';
@@ -24,6 +24,11 @@ export default function AppHeader({ notificationCount, collapseMenu }) {
     const user = await Auth.currentAuthenticatedUser();
     history.push('/admin/profile/' + user.username);
   };
+
+  useEffect(async () => {
+    const auth = await Auth.currentAuthenticatedUser();
+    console.log('My Auth is '+JSON.stringify(auth))
+  })
 
   return (
     <header className='py-5 px-8 bg-white flex '>

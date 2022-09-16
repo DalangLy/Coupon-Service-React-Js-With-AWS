@@ -7,13 +7,14 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchDashboardReport } from './../../reducers/dashboardReducer';
 import CardBarChart from 'components/Cards/CardBarChart';
+import {Auth} from "aws-amplify";
 
 export default function Dashboard() {
   const generateCoupon = useSelector((state) => state.dashboard.generateCoupon);
   const userThisWeek = useSelector((state) => state.dashboard.user);
   const closeTickets = useSelector((state) => state.dashboard.closeTicket);
 
-  useEffect(() => {
+  useEffect( () => {
     // if (generateCoupon.loading) dispatch(fetchDashboardReport());
   }, []);
 

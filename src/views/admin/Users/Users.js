@@ -121,13 +121,13 @@ export default function Users() {
   };
 
   const groupBodyTemplate = (rowData) => {
-    if (rowData.groups.length === 1 && rowData.groups.includes('')) {
+    if (rowData?.groups?.length === 1 && rowData?.groups?.includes('')) {
       return '';
     }
 
     return (
       <React.Fragment>
-        {rowData.groups.map((e) => (
+        {rowData?.groups?.map((e) => (
           <Tag key={e.toLowerCase()} className='mr-2 mb-2' value={e}></Tag>
         ))}
       </React.Fragment>
