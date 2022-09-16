@@ -7,19 +7,21 @@ import { SignInAdapter } from './../../adapters/';
 import { Messages } from 'primereact/messages';
 import CircleLoadingIndicator from 'components/Loadings/CircleLoadingIndicator';
 import getCurrentUserGroup from 'repository/group/getCurrentUserGroup';
-import { Link } from 'react-router-dom';
+import { Link, useHistory, useLocation, } from 'react-router-dom';
 import { Auth } from 'aws-amplify';
 import findUserRepository from 'repository/user/findUserRepository';
 
 export default function Login() {
   const [isLoading, setLoading] = useState(false);
-
+  let history = useHistory();
+  let location = useLocation();
   const email = useRef('');
   const password = useRef('');
   const messages = useRef('');
 
   const onChangeEmail = (event) => (email.current = event.target.value);
   const onChangePassword = (event) => (password.current = event.target.value);
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -61,7 +63,9 @@ export default function Login() {
         } else if (group?.includes('Supports') || group?.includes('Finances')) {
           window.location.href = '/admin/users';
         } else {
-          window.location.href = '/admin/dashboard';
+          //navigate to admin panel after logged in (not allow back button)
+          let { from } = location.state || { from: { pathname: "/admin/dashboard" } };
+          history.replace(from)
         }
       })
       .catch((err) => {
@@ -188,13 +192,4 @@ export default function Login() {
       </div>
     </div>
   );
-  // }
 }
-
-// export default function Login() {
-
-//   return (
-//     <>
-
-//   );
-// }
