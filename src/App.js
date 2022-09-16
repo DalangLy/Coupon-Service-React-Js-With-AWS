@@ -68,7 +68,7 @@ export default function App() {
               {/* <Route path='/register' component={Register} /> */}
               <Route from='/404' component={NotFound} />
               {/* <Redirect from='/' to='/login' /> */}
-              <Redirect from='*' to='/admin' />
+              <Redirect from='*' to='/admin/dashboard' />
             </Switch>
           </BrowserRouter>
         )}
