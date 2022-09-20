@@ -60,12 +60,14 @@ export default function Login() {
 
         if (group?.includes('Guests')) {
           window.location.href = '/admin/generate-coupon';
+          //history.replace("/admin/generate-coupon")
         } else if (group?.includes('Supports') || group?.includes('Finances')) {
           window.location.href = '/admin/users';
+          //history.replace("/admin/users")
         } else {
           //navigate to admin panel after logged in (not allow back button)
-          let { from } = location.state || { from: { pathname: "/admin/dashboard" } };
-          history.replace(from)
+          window.location.href = '/admin/dashboard';
+          //history.replace("/admin/dashboard")
         }
       })
       .catch((err) => {
