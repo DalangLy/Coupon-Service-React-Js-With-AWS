@@ -1,6 +1,6 @@
 // import React from 'react';
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 import { useDispatch } from 'react-redux';
 import { SignInAdapter } from './../../adapters/';
@@ -22,6 +22,14 @@ export default function Login() {
   const onChangeEmail = (event) => (email.current = event.target.value);
   const onChangePassword = (event) => (password.current = event.target.value);
 
+
+  useEffect(() => {
+
+    //avoid user to go back gto login page when they already Login
+    let auth = Auth;
+    if(auth.user == null) return;
+    history.replace('/admin/dashboard')
+  });
 
   const handleSubmit = async (event) => {
     event.preventDefault();

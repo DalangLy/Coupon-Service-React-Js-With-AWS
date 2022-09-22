@@ -44,7 +44,7 @@ export default function App() {
           .catch((e) => {
           });
       setIsInitPage(false);
-    }, 1000);
+    }, 0);
   }
 
   return (
