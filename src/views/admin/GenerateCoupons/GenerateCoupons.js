@@ -47,11 +47,7 @@ export default function GenerateCoupons() {
     },
   };
 
-  useEffect(() => {
-    let filteredSales = sales.data.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt))
-    console.log('hello world'+JSON.stringify(filteredSales))
-    //setFilteredSales(filteredSales);
-  }, [])
+  
 
 
     // const ff = async (event, id) => {

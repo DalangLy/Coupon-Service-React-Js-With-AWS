@@ -31,7 +31,11 @@ export const fetchCloseTicketReports = (filter) => (dispatch) => {
   const filters = graphqlFilterModelWithDataTable(filter);
   getCloseTicketReportRepository(filters)
     .then((result) => {
-      dispatch(onInit(result));
+      let sortedClosedTickerReports = result.items.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+      dispatch(onInit({
+        items: sortedClosedTickerReports,
+        nextToken: result.nextToken
+      }));
     })
     .catch((e) => {});
 };

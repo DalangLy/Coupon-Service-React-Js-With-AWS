@@ -32,6 +32,8 @@ export const fetchReportSerialCoupon =
     SerialCouponReportRepository(filters, limit + 1)
       .then((result) => {
         dispatch(setLoading(false));
+        let sorted = result.items.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        result.items = sorted;
         dispatch(onInit(result));
       })
       .catch((e) => {

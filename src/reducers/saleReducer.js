@@ -94,7 +94,11 @@ export const fetchSales =
     dispatch(onRefresh());
     getSaleRepository()
       .then((result) => {
-        dispatch(onInit(result.data.listSaleCoupons));
+        let sortedSales = result.data.listSaleCoupons.items.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        dispatch(onInit({
+          items: sortedSales,
+          nextToken: result.data.listSaleCoupons.nextToken
+        }));
       })
       .catch((e) => {
         dispatch(onLoading());

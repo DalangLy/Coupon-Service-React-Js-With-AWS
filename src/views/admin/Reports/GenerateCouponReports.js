@@ -285,7 +285,6 @@ export default function GenerateCouponReport() {
     return row?.package?.name;
   };
 
-  console.log(sales)
   return (
     <>
       <div className='flex flex-wrap'>

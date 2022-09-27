@@ -34,6 +34,8 @@ export const fetchSalesReport =
     filters['saleCouponApproverId'] = { ne: null };
     getSaleRepository(filters, limit + 1)
       .then((result) => {
+        let sortedGeneratedCouponReports = result.data.listSaleCoupons.items.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        result.data.listSaleCoupons.items = sortedGeneratedCouponReports
         dispatch(onInit(result.data.listSaleCoupons));
       })
       .catch((e) => {});
