@@ -25,10 +25,9 @@ export default function AppHeader({ notificationCount, collapseMenu }) {
     history.push('/admin/profile/' + user.username);
   };
 
-  useEffect(async () => {
-    const auth = await Auth.currentAuthenticatedUser();
-    console.log('My Auth is '+JSON.stringify(auth))
-  })
+  // useEffect(async () => {
+  //   const auth = await Auth.currentAuthenticatedUser();
+  // })
 
   return (
     <header className='py-5 px-8 bg-white flex '>

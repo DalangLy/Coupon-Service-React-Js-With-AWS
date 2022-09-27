@@ -1,6 +1,6 @@
-import React from 'react';
-
+import React, { useEffect, useState } from 'react';
 import {onNextPageSales, fetchSales, onEdit} from 'reducers/saleReducer';
+
 // components
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -25,6 +25,8 @@ export default function GenerateCoupons() {
     const dispatch = useDispatch();
     const auth = useSelector((state) => state.auth);
 
+    const [filteredSales, setFilteredSales] = useState();
+
   const filter = {
     global: { value: null, matchMode: FilterMatchMode.CONTAINS },
     customer: {
@@ -44,6 +46,12 @@ export default function GenerateCoupons() {
       constraints: [{ value: null, matchMode: FilterMatchMode.DATE_IS }],
     },
   };
+
+  useEffect(() => {
+    let filteredSales = sales.data.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt))
+    console.log('hello world'+JSON.stringify(filteredSales))
+    //setFilteredSales(filteredSales);
+  }, [])
 
 
     // const ff = async (event, id) => {
@@ -84,7 +92,6 @@ export default function GenerateCoupons() {
   };
 
   const bodyApproved = (rowData) => {
-      console.log('row data'+JSON.stringify(rowData))
     const color =
       rowData.status === GenerateCouponStatus.APPROVED
         ? 'green'
