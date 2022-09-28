@@ -242,15 +242,7 @@ export default function CloseTicketReport() {
   const resolverDataTemplate = (data) =>
     data?.resolver?.firstName + ' ' + data?.resolver?.lastName;
 
-  const customerDataTemplate = (data) =>
-    data?.applier?.firstName + ' ' + data?.applier?.lastName;
-
-  useEffect(() => {
-    reportCloseTickets.data.sort((a, b) => {
-      console.log(new Date(a.createdAt));
-      return new Date(a.createdAt) - new Date(b.createdAt);
-    })
-  },[])
+  const customerDataTemplate = (data) => data?.applier?.firstName + ' ' + data?.applier?.lastName;
 
   return (
     <>
